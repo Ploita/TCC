@@ -2,15 +2,15 @@
 lim_inf = 1;
 lim_sup = N;
 
-figure
-subplot(2,1,1)
-plot(output(lim_inf:lim_sup))
-title('Saída Real');
-
-subplot(2,1,2)
-plot(p_linha(lim_inf:lim_sup,:)*teta)
-title('Saída Predita')
-sgtitle('Treino')
+% figure
+% subplot(2,1,1)
+% plot(output(lim_inf:lim_sup))
+% title('Saída Real');
+% 
+% subplot(2,1,2)
+% plot(p_linha(lim_inf:lim_sup,:)*teta)
+% title('Saída Predita')
+% sgtitle('Treino')
 
 figure
 subplot(2,1,1)

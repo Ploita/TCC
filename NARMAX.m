@@ -7,27 +7,33 @@ ne = 1; %ordem do resíduo
 n = ny + nu + ne;
 M  = factorial(l+n)/(factorial(l)*factorial(n)); %Quantidade de termos para representar o problema
 
-erro = normrnd(0,0.05,N,1); %sinal erro
+erro = normrnd(0,0.1,N,1); %sinal erro
 min1 = max([ny nu ne])+1;
 p = [zeros(N,M - 1) ones(N,1)];
 
     
 %Estabelecendo a matriz de regressão
 %saída, entrada, ruído ou uma combinação destes, além de um termo constante
-for i = min1:N
+for i = 1:N
     pos = 1;
     for j =1:ny
-        p(i,pos) = output(i-j);
+        if(i-j>0) p(i,pos) = output(i-j);
+        else      p(i,pos) = 0;
+        end
         pos = pos+1;
     end
 
     for j =1:nu
-        p(i,pos) = input(i-j);
+        if(i-j>0) p(i,pos) = input(i-j);
+        else      p(i,pos) = 0;
+        end
         pos = pos+1;
     end
         
     for j =1:ne
-        p(i,pos) = erro(i-j);
+        if(i-j>0) p(i,pos) = erro(i-j);
+        else      p(i,pos) = 0;
+        end
         pos = pos+1;
     end
     

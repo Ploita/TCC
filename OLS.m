@@ -5,7 +5,7 @@ w = zeros(N,M);         %Matriz ortogonalizada
 a = eye(M);             %Triangular superior que auxilia na ortogonalização
 ERR = zeros(M,1);       %Taxa de redução de erro
 custo = zeros(M,1);     %Variável auxiliar para o ERR, é basicamente um ERR temporário
-tol = 0;                %Tolerância, o código para quando 1 - sum(ERR) < tol ou depois de varrer todos os parâmetros
+tol = 0.01;                %Tolerância, o código para quando 1 - sum(ERR) < tol ou depois de varrer todos os parâmetros
 
 
 %Ortogonalização de P
@@ -91,4 +91,8 @@ for i =M_linha-1:-1:1
     teta(i) = g(i) + temp;
 end
 
+
+for i = 1:M_linha
+    
+end
 clear a custo g i ii ite j k temp

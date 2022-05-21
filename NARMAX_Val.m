@@ -1,30 +1,43 @@
 %% NARMAX Validação
+%Validação Simulação k passos à frente
+%Tem que ver esse código RMSE(LS)<RMSE(OLS)
+RMSE = zeros(N-min1+1,1);
+p_1 = zeros(N,M);
+y_cha = zeros(N,N); %\hat{y} sendo a resposta estimada pela previsão 
 
-%Estabelecendo a matriz de parâmetros com M colunas
-p_1 = [zeros(N,M - 1) ones(N,1)];
 
-for i = min1:N
+
+%Para cada atraso a matriz de y_cha recebe uma coluna de out_val
+%Um mero ajuste pra facilitar a implementação
+for i = 1:ny 
+    for j = i:N
+        y_cha(i,j) = out_val(j);
+    end
+end
+
+for i = ny+1:N
+for j = i:N 
     pos = 1;
-    for j =1:ny
-        p_1(i,pos) = out_val(i-j);
+    for k1 = 1:ny
+        p_1(j,pos) = y_cha(i-k1,j-k1);
         pos = pos+1;
     end
 
-    for j =1:nu
-        p_1(i,pos) = inp_val(i-j);
+    for k1 = 1:nu
+        p_1(j,pos) = inp_val(j-k1);
         pos = pos+1;
     end
     
-    for j =1:ne
-        p_1(i,pos) = erro(i-j);
+    for k1 = 1:ne
+        p_1(j,pos) = erro(j-k1);
         pos = pos+1;
     end
     
     %Matriz de regressão (2ª ordem)
     if l>=2
-        for j = 1:n
-            for k = j:n 
-                p_1(i,pos) = p_1(i,j)*p_1(i,k);
+        for k1 = 1:n
+            for k2 = k1:n
+                p_1(j,pos) = p_1(j,k1)*p_1(j,k2);
                 pos = pos +1;
             end
         end
@@ -32,24 +45,36 @@ for i = min1:N
     
     %Matriz de regressão (3ª ordem)
     if l >=3
-       for j =1:n
-            for k = j:n
-                for ll = k:n
-                    p_1(i,pos) = p_1(i,j)*p_1(i,k)*p_1(i,ll);
+       for k1 =1:n
+            for k2 = k1:n
+                for k3 = k2:n
+                    p_1(j,pos) = p_1(j,k1)*p_1(j,k2)*p_1(j,k3);
                     pos = pos+1;
                 end
             end
         end 
     end
 end
-%Matriz de parâmetros com M_linha colunas
-p_val = zeros(N,M_linha);
 
-for i = 1:M_linha
-    p_val(:,i) = p_1(:,indice(i));
+
+p_lin = zeros(N,M_linha);
+
+for j = 1:M_linha
+    p_lin(:,j) = p_1(:,indice(j));
 end
 
-RMSE = sqrt(sum(power(output - p_linha*teta,2))/N);
-RMSE_val = sqrt(sum(power(out_val - p_val*teta,2))/N);
 
-clear i j k ll p_1
+for j = i:N
+    y_cha(i,j) = p_lin(j,:)*teta;
+end
+
+end
+%%
+y_cha = y_cha(ny+1:N,:);
+
+% Cálculo do RMSE por k passos tomados
+for i = 1:N-ny
+    RMSE(i) = sqrt(sum(power(out_val - y_cha(i,:)',2))/N);
+end
+
+clear i j k1 k2 k3 pos

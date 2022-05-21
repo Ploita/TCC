@@ -5,7 +5,7 @@ Sinal_entrada
 NARMAX
 
 %% Algoritmo de estimação de parâmetros
-LS
+OLS
 %ELS
 
 Plot_treino
