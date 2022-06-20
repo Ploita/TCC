@@ -117,7 +117,7 @@ u = zeros(n,1);
 amp = [0.12; 0.06; 0.03; 0.015];
 
 
-for j = 3
+for j = 1
     h_1 = zeros(n,1);
     h_2 = zeros(n,1);
     y = zeros(n,1);
@@ -147,7 +147,7 @@ end
 n = 600;
 t = 0:0.01:6-0.01;
 
-u = 0.1*sin(2*pi()*t/6);
+u = 0.12*sin(2*pi()*t/6);
 y = zeros(n,1);
 
 

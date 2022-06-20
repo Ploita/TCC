@@ -5,8 +5,8 @@ w = zeros(N,M);         %Matriz ortogonalizada
 a = eye(M);             %Triangular superior que auxilia na ortogonalização
 ERR = zeros(M,1);       %Taxa de redução de erro
 custo = zeros(M,1);     %Variável auxiliar para o ERR, é basicamente um ERR temporário
-tol = 0.01;                %Tolerância, o código para quando 1 - sum(ERR) < tol ou depois de varrer todos os parâmetros
-
+tol = 0;%10^-3;         %Tolerância, o código para quando 1 - sum(ERR) < tol ou depois de varrer todos os parâmetros
+Mlimite = 4;            %Limite de termos, o código para quando atinge o número de termos ou depois de varrer todos os parâmetros
 
 %Ortogonalização de P
 %o objetivo é reduzir a quantidade de parâmetros, então cada coluna de W é calculada testando todos os parâmetros disponíveis e utilizar apenas o melhor
@@ -60,7 +60,7 @@ for ii = 2:M
     
     %Código de parada
     ESR = 1 - sum(ERR);
-    if ESR < tol
+    if ESR < tol || size(nonzeros(indice),1) == Mlimite
         break;
     end
 end

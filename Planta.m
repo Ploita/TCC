@@ -7,9 +7,7 @@ y = zeros(nend,1);
 u = zeros(nend,1);
 
 if index == 1
-     
-%     sys = tf(0.4,[1 -0.8],-1);
-%     p = lsim(sys, entrada);
+
     y(1) = ruido(1);
     for i = 2:nend
         y(i) = 0.4*entrada(i-1) + 0.8*y(i-1) + ruido(i);

@@ -12,7 +12,7 @@ lim_sup = N;
 % title('Saída Predita')
 % sgtitle('Treino')
 
-figure
+png = figure;
 subplot(2,1,1)
 plot(output(lim_inf:lim_sup)-p_linha(lim_inf:lim_sup,:)*teta)
 title('Sinal diferença')
@@ -23,3 +23,4 @@ pp(1).Color = 'b';
 pp(2).Color = 'r';
 title('Saída Real x Saída predita')
 sgtitle('Treino')
+saveas(png,"TreinoOLS"+ int2str(index) +".png")
