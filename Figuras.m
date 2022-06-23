@@ -1,4 +1,4 @@
-    %% Respostas assimétricas 3.1.1
+%% Respostas assimétricas 3.1.1
 n = 100;
 u = ones(n,1);
 y = zeros(n,1);
@@ -76,8 +76,8 @@ for k = amp
     u = o.*k;
     y(1) = tanh(c);
     y(2) = tanh(a_1*y(1)+b*u(1)+c);
-    for k = 3:n
-        y(k) = tanh(a_1*y(k-1)-a_2*y(k-2)+b*u(k-1)+c);
+    for k2 = 3:n
+        y(k2) = tanh(a_1*y(k2-1)-a_2*y(k2-2)+b*u(k2-1)+c);
     end
     out(pos) = y(n);
     pos = pos + 1;

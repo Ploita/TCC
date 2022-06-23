@@ -12,7 +12,7 @@ subplot(3,1,3)
 plot(b0)
 ylabel('b_0')
 xlabel('k')
-saveas(png,"TetaRLS"+ int2str(index) +".png")
+% saveas(png,"TetaRLS"+ int2str(index) +".png")
 %%
 % Imprimir o modelo
 if a1(N) > 0
@@ -51,14 +51,14 @@ pp(1).Color = 'b';
 pp(2).Color = 'r';
 title('Saída Real x Saída predita')
 sgtitle('Validação')
-saveas(png,"ValidaçãoRLS"+ int2str(index) +".png")
+% saveas(png,"ValidaçãoRLS"+ int2str(index) +".png")
 %
 png = figure;
 sgtitle('Evolução da taxa RMSE')
 plot(0:100,[0; RMSE(1:100)])
 xlabel("\rho passos à frente")
 ylabel("RMSE")
-saveas(png,"RMSE_RLS"+ int2str(index) +".png")
+% saveas(png,"RMSE_RLS"+ int2str(index) +".png")
 %%
 png = figure;
 sgtitle('Parâmetros R e S')
@@ -78,7 +78,7 @@ subplot(4,1,4)
 plot(s2)
 ylabel('s_2')
 xlabel('k')
-saveas(png,"PolinomiosRS"+ int2str(index) +".png")
+% saveas(png,"PolinomiosRS"+ int2str(index) +".png")
 % Imprimir o modelo
 if r1(N) > 0
     fprintf('R(z^-1) = %.4f',r1(N));
@@ -115,11 +115,11 @@ ylabel("y(k)")
 hold on
 plot(v(1:1000))
 hold off
-saveas(png,"ControleRLS"+ int2str(index) +".png")
+% saveas(png,"ControleRLS"+ int2str(index) +".png")
 
 png = figure;
 sgtitle('Ação de controle')
 plot(sinal_controle)
 xlabel('k')
 ylabel('u(k)')
-saveas(png,"LeiRLS"+ int2str(index) +".png")
+% saveas(png,"LeiRLS"+ int2str(index) +".png")

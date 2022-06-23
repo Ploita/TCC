@@ -1,11 +1,8 @@
 %% NARMAX Validação
-%Validação Simulação k passos à frente
-%Tem que ver esse código RMSE(LS)<RMSE(OLS)
+%Validação Simulação rho passos à frente
 RMSE = zeros(N-min1+1,1);
 p_1 = zeros(N,M);
 y_cha = zeros(N,N); %\hat{y} sendo a resposta estimada pela previsão 
-
-
 
 %Para cada atraso a matriz de y_cha recebe uma coluna de out_val
 %Um mero ajuste pra facilitar a implementação
@@ -72,7 +69,7 @@ end
 %%
 y_cha = y_cha(ny+1:N,:);
 
-% Cálculo do RMSE por k passos tomados
+% Cálculo do RMSE por rho passos tomados
 for i = 1:N-ny
     RMSE(i) = sqrt(sum(power(out_val - y_cha(i,:)',2))/N);
 end
