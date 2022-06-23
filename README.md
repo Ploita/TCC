@@ -7,11 +7,11 @@ Os códigos que utilizam os demais códigos para realizar a identificação e co
   
 ## Base.mlx
 
-Realiza a identificação e controle sob a arquitetura NARMAX com uso de MQO, MQE ou MQ, a previsão de $\rho$ passos à frente do modelo pode ser ajustada alterando o valor de $\rho$ e por fim a planta é controlada pelo método _Feedback Linearization_
+Realiza a identificação e controle sob a arquitetura NARMAX com uso de MQO, MQE ou MQ, a previsão de $\rho$ passos à frente do modelo pode ser ajustada alterando seu valor e por fim a planta é controlada pelo método _Feedback Linearization_
   
 ## RLS  
 
-Realiza a identificação e controle sob a arquitetura ARX com uso de MQR, a previsão de $\rho$ passos à frente do modelo pode ser ajustada alterando o valor de $\rho$ e por fim a planta é controlada pelo método alocação de polos incremental direta  
+Realiza a identificação e controle sob a arquitetura ARX com uso de MQR, a previsão de $\rho$ passos à frente do modelo pode ser ajustada alterando seu valor e por fim a planta é controlada pelo método alocação de polos incremental direta  
   
 ## NonLinearityTest
 
